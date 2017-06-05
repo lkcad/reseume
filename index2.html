@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 10px 4px;
+        }
+
+        body {
+            background-image: url("pic.jpg");
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .small div img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .image-list div {
+            cursor: pointer;
+            float: left;
+            width: 24%;
+            height: 120px;
+            text-align: center;
+        }
+
+        .image-list div span {
+            display: block;
+            width: 100%;
+            text-align: center;
+        }
+
+        .container {
+            border: 3px solid #74ebff;
+            border-radius: 20px;
+        }
+
+        .container .main-text {
+            display: block;
+            position: relative;
+            width: 60%;
+            text-align: center;
+            margin-left: auto;
+            margin-right: auto;
+            border: 2px solid #000;
+            border-radius: 10px;
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .span-title {
+            display: block;
+            font-size: 23px;
+            margin: 60px auto 0 auto;
+            width: 200px;
+            text-align: center;
+            font-weight: bold;
+            border-bottom: 3px solid #2777ff;
+        }
+
+        .container .image-list {
+            margin: 140px auto 0 auto;
+            width: 800px;
+            height: 150px;
+            /* border: 3px solid red;*/
+        }
+
+        #container-1 .main-text {
+            margin-top: 25%;
+        }
+
+        #container-2 .main-text {
+            margin-top: 8%;
+        }
+
+        #container-3 .main-text {
+            margin-top: 3%;
+        }
+
+        #container-4 .main-text {
+            margin-top: 4%;
+        }
+
+        #guide {
+            position: fixed;
+            right: 4%;
+            top: 40%;
+        }
+
+        #guide li {
+            list-style: none;
+            background-color: transparent;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            border: 2px solid black;
+            text-align: center;
+        }
+
+        #guide ul .selected {
+            background-color: red;
+
+        }
+
+        #guide ul li a {
+            display: block;
+            width: 10px;
+            height: 10px;
+            margin: 0;
+            padding: 0;
+            border-radius: 50%;
+        }
+
+        .container .image {
+            width: 950px;
+            height: 350px;
+            margin: 2% auto 0 auto;
+            /*border: 3px solid red;*/
+            text-align: center;
+        }
+
+        .container .image div, .container .image div img {
+            margin: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+    </style>
+    <script>
+        window.onload = function () {
+            setContainerHeight(document.getElementsByClassName("container"));
+            onscroll();
+        };
+        function setContainerHeight(elements) {
+            var height = window.innerHeight;
+            for (var i = 0; i < elements.length; i++) {
+                elements[i].style.height = height - 20 + "px";
+            }
+        }
+        var old = 1;
+        window.onscroll = function () {
+            var top = document.documentElement.scrollTop || document.body.scrollTop;
+            var pages = document.getElementsByClassName("container");
+            var index;
+            for (var i = 0; i < pages.length; i++) {
+                var offsetTop = pages[i].offsetTop;
+//                console.log(offsetTop);
+                if (top > offsetTop - 200) {
+                    index = (pages[i].id).split("-")[1];
+                } else {
+                    break;
+                }
+            }
+            if (old !== index) {
+                setIndex(index - 1);
+            }
+            old = index;
+            function setIndex(n) {
+                var guide = document.getElementById("guide");
+                var li = guide.getElementsByTagName("li");
+                for (var i = 0; i < li.length; i++) {
+                    li[i].removeAttribute("class");
+                }
+                li[n].setAttribute("class", "selected");
+//                console.log(li)
+            }
+        };
+    </script>
+</head>
+<body>
+<div id="guide">
+    <ul>
+        <li class=""><a href="#container-1"></a></li>
+        <li class=""><a href="#container-2"></a></li>
+        <li class=""><a href="#container-3"></a></li>
+        <li class=""><a href="#container-4"></a></li>
+        <li class=""><a href="#container-5"></a></li>
+        <li class=""><a href="#container-6"></a></li>
+    </ul>
+
+</div>
+<div class="container" id="container-1">
+    <span class="span-title">关于我</span>
+
+    <span class="main-text">
+        <p>本人大三学生，喜欢编程从2016年10月开始学习JavaWeb,之后接触网页前端，</p>
+        <p>学习了HTML,CSS相关的技术，之后陆续学习了JavaScript和Jquery等技术，</p>
+        <p>喜欢学习心得技术，热爱网页开发。</p>
+    </span>
+</div>
+<div class="container" id="container-2">
+    <span class="span-title">相关技能</span>
+    <div class="image-list small">
+        <div><img src="Image/logo/html5-logo.png" alt="图片"><span>HTML</span></div>
+        <div><img src="Image/logo/css3-logo.png" alt="图片"><span>CSS</span></div>
+        <div><img src="Image/logo/javascript-logp.png" alt="图片"><span>JavaScript</span></div>
+        <div><img src="Image/logo/jquery-logo.png" alt="图片"><span>Jquery</span></div>
+    </div>
+    <div class="main-text">
+        <p>深刻理解Web标准，能熟练运用HTML,CSS编写页面</p>
+        <p>熟悉JavaScript和Jquery，正在近一步学习。</p>
+        <p>对前端技术兴趣浓厚</p>
+    </div>
+</div>
+<div class="container" id="container-3">
+    <span class="span-title">学习历程</span>
+    <div class="image">
+        <div><img src="pic.jpg" alt=" "></div>
+    </div>
+    <div class="main-text">
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+    </div>
+</div>
+<div class="container" id="container-4">
+    <span class="span-title">生活中的我</span>
+    <span class="main-text">
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+        这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本这是文本
+    </span>
+</div>
+<div class="container" id="container-5">
+    <span class="span-title">内容展示</span>
+    <div class="image-list small">
+        <div><img src="Image/example/example.jpg" alt="图片"><span>第一个</span></div>
+        <div><img src="Image/example/example.jpg" alt="图片"><span>第二个</span></div>
+        <div><img src="Image/example/example.jpg" alt="图片"><span>第三个</span></div>
+        <div><img src="Image/example/example.jpg" alt="图片"><span>第四个</span></div>
+    </div>
+</div>
+<div class="container" id="container-6">
+    <span class="span-title">联系方式</span>
+    <span class="main-text">
+        <p>电话：1234567891</p>
+        <a href="#">给我发邮件</a>
+        <p>扫码添加微信</p>
+    </span>
+    <div class="image">
+        <img src="pic.jpg " height="200" width="200">
+    </div>
+</div>
+</body>
+</html>

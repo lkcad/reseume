@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简历</title>
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        tr {
+            background-color: aqua;
+            height: 400px;
+        }
+
+        td {
+            width: 400px;
+        }
+    </style>
+    <script>
+        window.onload = function () {
+            var tr = document.getElementsByTagName("tr");
+            var screenHeight = window.innerHeight;
+            var screenWidth = window.innerWidth;
+            console.log(screenHeight);
+            for (var i = 0; i < tr.length; i++) {
+                tr[i].setAttribute("style", "height:" + screenHeight + "px");
+                var td = tr[i].getElementsByTagName("td");
+                for (var j = 0; j < td.length; j++) {
+                    td[j].setAttribute("style", "width:" + screenWidth / td.length + "px");
+                }
+            }
+//            for (var i = 0; i < td.length; i++) {
+//                td[i].setAttribute("style", "width:" + screenWidth / (td.length / tr.length) + "px");
+//            }
+
+        }
+    </script>
+</head>
+<body>
+<table>
+    <tr>
+        <td colspan="3">这是td</td>
+    </tr>
+    <tr>
+        <td>这是td</td>
+        <td>这是td</td>
+        <td>这是td</td>
+    </tr>
+    <tr>
+        <td>这是td</td>
+        <td>这是td</td>
+        <td>这是td</td>
+    </tr>
+    <tr>
+        <td>这是td</td>
+        <td>这是td</td>
+        <td>这是td</td>
+    </tr>
+</table>
+</body>
+</html>
